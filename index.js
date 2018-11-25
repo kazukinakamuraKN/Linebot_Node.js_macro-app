@@ -21,7 +21,8 @@ server.use("/bot/webhook", bot_express({
     messenger: {
         line: {
             channel_id: process.env.LINE_CHANNEL_ID,
-            channel_secret: process.env.LINE_CHANNEL_SECRET
+            channel_secret: process.env.LINE_CHANNEL_SECRET,
+            channel_access_token: process.env.LINE_ACCESS_TOKEN
         }
     },
     nlu: {
