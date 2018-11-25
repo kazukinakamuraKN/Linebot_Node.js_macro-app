@@ -178,22 +178,21 @@ module.exports = class SkillHandleDeliveryOrder {
 
                     bot.queue({
                         type: "text",
-                        text: `${context.confirmed.menuWeight}ですね。`
+                        text: `${value}ですね。`
                     });
                 }
             }
         }
-    }
 
-    async finish(bot, event, context){
-        if (context.confirmed.menuGender == '男'){
-            kisotaisha = 10 * context.confirmed.menuWeight + 6.25 * context.confirmed.menuHeight -5 * context.confirmed.menuAge + 5 
-        } else {
-            kisotaisha = 10 * context.confirmed.menuWeight + 6.25 * context.confirmed.menuHeight -5 * context.confirmed.menuAge -161 
-        }
+//    async finish(bot, event, context){
+//        if (context.confirmed.menuGender == '男'){
+//            kisotaisha = 10 * context.confirmed.menuWeight + 6.25 * context.confirmed.menuHeight -5 * context.confirmed.menuAge + 5 
+//        } else {
+//            kisotaisha = 10 * context.confirmed.menuWeight + 6.25 * context.confirmed.menuHeight -5 * context.confirmed.menuAge -161 
+//        }
         await bot.reply({
             type: "text",
-            text: `あなたの基礎代謝は${ kisotaisha }を30分後くらいに${context.confirmed.address}にお届けしますわ。おおきに。`
+            text: `あなたの基礎代謝は${ context.confirmed.menuWeight.message_to_confirm }を30分後くらいに${context.confirmed.address}にお届けしますわ。おおきに。`
         });
     }
 
