@@ -110,6 +110,76 @@ module.exports = class SkillHandleDeliveryOrder {
                     });
                 }
             },
+            menuActive: {
+                message_to_confirm: {
+                    type: "template",
+                    altText: "アクティブ度を選択",
+                    template: {
+                        type: "buttons",
+                        text: "アクティブ度を教えてください",
+                        actions: [
+                            {type: "message", label: "低い", text: "低い"},
+                            {type: "message", label: "まあまあ", text: "まあまあ"},
+                            {type: "message", label: "かなり高い", text: "かなり高い"}
+                        ]
+                    }
+                },
+                parser: async (value, bot, event, context) => {
+                    if (["低い", "まあまあ", "かなり高い"].includes(value)) {
+                        if (["低い"].includes(value)){
+                            return "低い"
+                        } else if (["まあまあ"].includes(value)) {
+                            return "まあまあ"
+                        }else {
+                            return "かなり高い"
+                        }
+                    }
+
+                    throw new Error();
+                },
+                reaction: async (error, value, bot, event, context) => {
+                    if (error) return;
+
+                    bot.queue({
+                        type: "text",
+                        text: `${value}ですね。`
+                    });
+                }
+            },
+            menuPurpose: {
+                message_to_confirm: {
+                    type: "template",
+                    altText: "目的を選択",
+                    template: {
+                        type: "buttons",
+                        text: "目的を教えてください",
+                        actions: [
+                            {type: "message", label: "減量", text: "減量"},
+                            {type: "message", label: "維持", text: "維持"},
+                            {type: "message", label: "増量", text: "増量"}
+                        ]
+                    }
+                },
+                parser: async (value, bot, event, context) => {
+                    if (["男", "女"].includes(value)) {
+                        if (["男"].includes(value)){
+                            return "男"
+                        } else {
+                            return "女"
+                        }
+                    }
+
+                    throw new Error();
+                },
+                reaction: async (error, value, bot, event, context) => {
+                    if (error) return;
+
+                    bot.queue({
+                        type: "text",
+                        text: `${value}性ですね。`
+                    });
+                }
+            },
             address: {
                 message_to_confirm: {
                     type: "text",
