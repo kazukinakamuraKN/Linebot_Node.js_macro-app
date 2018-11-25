@@ -52,11 +52,18 @@ module.exports = class SkillHandleDeliveryOrder {
                 },
                 reaction: async (error, value, bot, event, context) => {
                     if (error) return;
-
-                    bot.queue({
+                    if ( value == ^[0-9]{1,3}$ ){
+                        bot.queue({
                         type: "text",
                         text: `${value}cmですね。`
-                    });
+                        });
+                    } else {
+                        bot.queue({
+                        type: "text",
+                        text: `${value}cmですね。大きいですね,,,`
+                        });
+                    }
+                    
                 }
             },
             menuWeight: {
