@@ -39,7 +39,7 @@ module.exports = class SkillHandleDeliveryOrder {
             },
             menu2: {
                 message_to_confirm: {
-                    type: "number",
+                    type: "text",
                     text: "身長を教えてください(数値)"
                 },
                 parser: async (value, bot, event, context) => {
@@ -53,7 +53,7 @@ module.exports = class SkillHandleDeliveryOrder {
                     if (error) return;
 
                     bot.queue({
-                        type: "number",
+                        type: "text",
                         text: `${value}cmですね。`
                     });
                 }
