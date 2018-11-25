@@ -7,15 +7,14 @@ module.exports = class SkillHandleDeliveryOrder {
             menu: {
                 message_to_confirm: {
                     type: "template",
-                    altText: "マクロ管理法で一日の摂取カロリーを計算します",
-                    altText: "出前のメニューは松、竹、梅の3種類になっとりますけどどちらにしましょっ？",
+                    altText: "マクロ管理法スタート",
                     template: {
                         type: "buttons",
-                        text: "ご注文は？",
+                        text: "マクロ管理法で一日の摂取カロリーを計算します",
+                        text: "まずは性別を教えてください",
                         actions: [
-                            {type: "message", label: "松", text: "松"},
-                            {type: "message", label: "竹", text: "竹"},
-                            {type: "message", label: "梅", text: "梅"}
+                            {type: "message", label: "男", text: "男"},
+                            {type: "message", label: "女", text: "女"}
                         ]
                     }
                 },
