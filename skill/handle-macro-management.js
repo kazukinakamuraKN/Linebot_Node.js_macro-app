@@ -10,7 +10,6 @@ module.exports = class SkillHandleDeliveryOrder {
                     altText: "マクロ管理法スタート",
                     template: {
                         type: "buttons",
-                        text: "マクロ管理法で一日の摂取カロリーを計算します",
                         text: "まずは性別を教えてください",
                         actions: [
                             {type: "message", label: "男", text: "男"},
@@ -19,8 +18,12 @@ module.exports = class SkillHandleDeliveryOrder {
                     }
                 },
                 parser: async (value, bot, event, context) => {
-                    if (["松", "竹", "梅"].includes(value)) {
-                        return value;
+                    if (["男", "女"].includes(value)) {
+                        if (["男"].includes(value)){
+                            return "otoko"
+                        } else {
+                            return "onnna"
+                        }
                     }
 
                     throw new Error();
@@ -32,7 +35,30 @@ module.exports = class SkillHandleDeliveryOrder {
                         type: "text",
                         text: `あいよっ！${value}ね。`
                     });
-                }
+                },
+                message_to_confirm: {
+                    type: "template",
+                    altText: "マクロ管理法スタート",
+                    template: {
+                        type: "buttons",
+                        text: "まずは性別を教えてください",
+                        actions: [
+                            {type: "message", label: "男", text: "男"},
+                            {type: "message", label: "女", text: "女"}
+                        ]
+                    }
+                },
+                parser: async (value, bot, event, context) => {
+                    if (["男", "女"].includes(value)) {
+                        if (["男"].includes(value)){
+                            return "otoko"
+                        } else {
+                            return "onnna"
+                        }
+                    }
+
+                    throw new Error();
+                },
             },
             address: {
                 message_to_confirm: {
