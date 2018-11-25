@@ -181,21 +181,6 @@ module.exports = class SkillHandleDeliveryOrder {
                         text: `${value}ですね。`
                     });
                 }
-            },
-            address: {
-                message_to_confirm: {
-                    type: "text",
-                    text: "どちらにお届けしましょっ？"
-                },
-                parser: async (value, bot, event, context) => {
-                    if (typeof value == "string"){
-                        return value;
-                    } else if (typeof value == "object" && value.type == "location"){
-                        return value.address;
-                    }
-
-                    throw new Error();
-                }
             }
         }
     }
@@ -203,7 +188,7 @@ module.exports = class SkillHandleDeliveryOrder {
     async finish(bot, event, context){
         await bot.reply({
             type: "text",
-            text: `あいよっ。じゃあ${context.confirmed.menu}を30分後くらいに${context.confirmed.address}にお届けしますわ。おおきに。`
+            text: `あいよっ。じゃあ${10 * context.confirmed.menuWeight + 6.25 * context.confirmed.menuHeight -5 * context.confirmed.menuAge + 5 }を30分後くらいに${context.confirmed.address}にお届けしますわ。おおきに。`
         });
     }
 
