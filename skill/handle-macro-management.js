@@ -39,24 +39,12 @@ module.exports = class SkillHandleDeliveryOrder {
             },
             menu2: {
                 message_to_confirm: {
-                    type: "template",
-                    altText: "マクロ管理法スタート",
-                    template: {
-                        type: "buttons",
-                        text: "まずは性別を教えてください",
-                        actions: [
-                            {type: "message", label: "男", text: "男"},
-                            {type: "message", label: "女", text: "女"}
-                        ]
-                    }
+                    type: "number",
+                    text: "身長を教えてください(数値)"
                 },
                 parser: async (value, bot, event, context) => {
-                    if (["男", "女"].includes(value)) {
-                        if (["男"].includes(value)){
-                            return "男"
-                        } else {
-                            return "女"
-                        }
+                    if (typeof value == "number"){
+                        return value;
                     }
 
                     throw new Error();
@@ -65,8 +53,8 @@ module.exports = class SkillHandleDeliveryOrder {
                     if (error) return;
 
                     bot.queue({
-                        type: "text",
-                        text: `${value}性ですね。`
+                        type: "number",
+                        text: `${value}cmですね。`
                     });
                 }
             },
