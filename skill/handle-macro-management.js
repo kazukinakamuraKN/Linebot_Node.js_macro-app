@@ -4,7 +4,7 @@ module.exports = class SkillHandleDeliveryOrder {
 
     constructor(){
         this.required_parameter = {
-            menu: {
+            menuGender: {
                 message_to_confirm: {
                     type: "template",
                     altText: "マクロ管理法スタート",
@@ -37,7 +37,7 @@ module.exports = class SkillHandleDeliveryOrder {
                     });
                 }
             },
-            menu2: {
+            menuHeight: {
                 message_to_confirm: {
                     type: "text",
                     text: "身長を教えてください(数値)"
@@ -56,6 +56,50 @@ module.exports = class SkillHandleDeliveryOrder {
                     bot.queue({
                         type: "text",
                         text: `${value}cmですね。`
+                    });
+                }
+            },
+            menuWeight: {
+                message_to_confirm: {
+                    type: "text",
+                    text: "体重を教えてください(数値)"
+                },
+                parser: async (value, bot, event, context) => {
+                    value = Number(value);
+                    if (typeof value == "number"){
+                        return value;
+                    }
+
+                    throw new Error();
+                },
+                reaction: async (error, value, bot, event, context) => {
+                    if (error) return;
+
+                    bot.queue({
+                        type: "text",
+                        text: `${value}kgですね。`
+                    });
+                }
+            },
+            menuAge: {
+                message_to_confirm: {
+                    type: "text",
+                    text: "年齢を教えてください(数値)"
+                },
+                parser: async (value, bot, event, context) => {
+                    value = Number(value);
+                    if (typeof value == "number"){
+                        return value;
+                    }
+
+                    throw new Error();
+                },
+                reaction: async (error, value, bot, event, context) => {
+                    if (error) return;
+
+                    bot.queue({
+                        type: "text",
+                        text: `${value}歳ですね。`
                     });
                 }
             },
