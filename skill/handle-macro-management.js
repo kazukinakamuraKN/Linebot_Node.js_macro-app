@@ -4,16 +4,6 @@ module.exports = class SkillHandleDeliveryOrder {
 
     constructor(){
         this.required_parameter = {
-            greet: {
-                message_to_confirm: {
-                    type: "template",
-                    altText: "マクロ管理法スタート",
-                    template: {
-                        type: "buttons",
-                        text: "マクロ管理法をスタートします"
-                    }
-                }
-            },
             menu: {
                 message_to_confirm: {
                     type: "template",
