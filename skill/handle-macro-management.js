@@ -161,11 +161,13 @@ module.exports = class SkillHandleDeliveryOrder {
                     }
                 },
                 parser: async (value, bot, event, context) => {
-                    if (["男", "女"].includes(value)) {
-                        if (["男"].includes(value)){
-                            return "男"
-                        } else {
-                            return "女"
+                    if (["減量", "維持", "増量"].includes(value)) {
+                        if (["減量"].includes(value)){
+                            return "減量"
+                        } else if (["維持"].includes(value)) {
+                            return "維持"
+                        }else {
+                            return "増量"
                         }
                     }
 
@@ -176,7 +178,7 @@ module.exports = class SkillHandleDeliveryOrder {
 
                     bot.queue({
                         type: "text",
-                        text: `${value}性ですね。`
+                        text: `${value}ですね。`
                     });
                 }
             },
