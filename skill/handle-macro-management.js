@@ -20,9 +20,9 @@ module.exports = class SkillHandleDeliveryOrder {
                 parser: async (value, bot, event, context) => {
                     if (["男", "女"].includes(value)) {
                         if (["男"].includes(value)){
-                            return "otoko"
+                            return "男"
                         } else {
-                            return "onnna"
+                            return "女"
                         }
                     }
 
@@ -33,7 +33,40 @@ module.exports = class SkillHandleDeliveryOrder {
 
                     bot.queue({
                         type: "text",
-                        text: `あいよっ！${value}ね。`
+                        text: `${value}性ですね。`
+                    });
+                }
+            },
+            menu: {
+                message_to_confirm: {
+                    type: "template",
+                    altText: "マクロ管理法スタート",
+                    template: {
+                        type: "buttons",
+                        text: "まずは性別を教えてください",
+                        actions: [
+                            {type: "message", label: "男", text: "男"},
+                            {type: "message", label: "女", text: "女"}
+                        ]
+                    }
+                },
+                parser: async (value, bot, event, context) => {
+                    if (["男", "女"].includes(value)) {
+                        if (["男"].includes(value)){
+                            return "男"
+                        } else {
+                            return "女"
+                        }
+                    }
+
+                    throw new Error();
+                },
+                reaction: async (error, value, bot, event, context) => {
+                    if (error) return;
+
+                    bot.queue({
+                        type: "text",
+                        text: `${value}性ですね。`
                     });
                 }
             },
