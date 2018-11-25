@@ -4,6 +4,16 @@ module.exports = class SkillHandleDeliveryOrder {
 
     constructor(){
         this.required_parameter = {
+            greet: {
+                message_to_confirm: {
+                    type: "template",
+                    altText: "マクロ管理法スタート",
+                    template: {
+                        type: "buttons",
+                        text: "マクロ管理法をスタートします"
+                    }
+                }
+            },
             menu: {
                 message_to_confirm: {
                     type: "template",
@@ -35,30 +45,7 @@ module.exports = class SkillHandleDeliveryOrder {
                         type: "text",
                         text: `あいよっ！${value}ね。`
                     });
-                },
-                message_to_confirm: {
-                    type: "template",
-                    altText: "マクロ管理法スタート",
-                    template: {
-                        type: "buttons",
-                        text: "まずは性別を教えてください",
-                        actions: [
-                            {type: "message", label: "男", text: "男"},
-                            {type: "message", label: "女", text: "女"}
-                        ]
-                    }
-                },
-                parser: async (value, bot, event, context) => {
-                    if (["男", "女"].includes(value)) {
-                        if (["男"].includes(value)){
-                            return "otoko"
-                        } else {
-                            return "onnna"
-                        }
-                    }
-
-                    throw new Error();
-                },
+                }
             },
             address: {
                 message_to_confirm: {
