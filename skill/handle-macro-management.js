@@ -43,6 +43,7 @@ module.exports = class SkillHandleDeliveryOrder {
                     text: "身長を教えてください(数値)"
                 },
                 parser: async (value, bot, event, context) => {
+                    value = value.toString(10);
                     if (typeof value == "number"){
                         return value;
                     }
