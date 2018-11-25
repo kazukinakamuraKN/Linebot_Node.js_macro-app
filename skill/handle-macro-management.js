@@ -178,7 +178,7 @@ module.exports = class SkillHandleDeliveryOrder {
 
                     bot.queue({
                         type: "text",
-                        text: `${value}ですね。`
+                        text: `${context.confirmed.menuWeight}ですね。`
                     });
                 }
             }
