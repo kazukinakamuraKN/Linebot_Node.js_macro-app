@@ -52,7 +52,7 @@ module.exports = class SkillHandleDeliveryOrder {
                 },
                 reaction: async (error, value, bot, event, context) => {
                     if (error) return;
-                    if ( value == ^[0-9]{1,3}$ ){
+                    if ( !isNaN(value) ){
                         bot.queue({
                         type: "text",
                         text: `${value}cmですね。`
@@ -60,7 +60,7 @@ module.exports = class SkillHandleDeliveryOrder {
                     } else {
                         bot.queue({
                         type: "text",
-                        text: `${value}cmですね。大きいですね,,,`
+                        text: `${value}cmですね。文字列ですね,,,`
                         });
                     }
                     
