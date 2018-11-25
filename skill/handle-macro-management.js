@@ -37,7 +37,7 @@ module.exports = class SkillHandleDeliveryOrder {
                     });
                 }
             },
-            menu: {
+            menu2: {
                 message_to_confirm: {
                     type: "template",
                     altText: "マクロ管理法スタート",
