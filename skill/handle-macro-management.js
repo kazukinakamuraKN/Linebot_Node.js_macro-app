@@ -188,7 +188,12 @@ module.exports = class SkillHandleDeliveryOrder {
     async finish(bot, event, context){
         await bot.reply({
             type: "text",
-            text: `あいよっ。じゃあ${10 * context.confirmed.menuWeight + 6.25 * context.confirmed.menuHeight -5 * context.confirmed.menuAge + 5 }を30分後くらいに${context.confirmed.address}にお届けしますわ。おおきに。`
+            text: `あなたの基礎代謝は
+                ${ if (context.confirmed.menuGender == '男'){
+            10 * context.confirmed.menuWeight + 6.25 * context.confirmed.menuHeight -5 * context.confirmed.menuAge + 5 
+                } else {
+            10 * context.confirmed.menuWeight + 6.25 * context.confirmed.menuHeight -5 * context.confirmed.menuAge -161 
+                        }  }を30分後くらいに${context.confirmed.address}にお届けしますわ。おおきに。`
         });
     }
 
