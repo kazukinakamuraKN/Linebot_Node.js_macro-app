@@ -188,7 +188,7 @@ module.exports = class SkillHandleDeliveryOrder {
     async finish(bot, event, context){
         await bot.reply({
             type: "text",
-            text: `あなたの基礎代謝は${10 * context.confirmed.menuWeight + 6.25 * context.confirmed.menuHeight -5 * context.confirmed.menuAge + context.confirmed.menuGender }kcalです。\nあなたの目的とアクティブ度から計算された摂取カロリーは${10 * context.confirmed.menuWeight + 6.25 * context.confirmed.menuHeight -5 * context.confirmed.menuAge + context.confirmed.menuGender * context.confirmed.menuActive * context.confirmed.menuPurpose }kcalです`
+            text: `あなたの基礎代謝は${10 * context.confirmed.menuWeight + 6.25 * context.confirmed.menuHeight -5 * context.confirmed.menuAge + context.confirmed.menuGender }kcalです。\nあなたの目的とアクティブ度から計算された摂取カロリーは${(10 * context.confirmed.menuWeight + 6.25 * context.confirmed.menuHeight -5 * context.confirmed.menuAge + context.confirmed.menuGender) * context.confirmed.menuActive * context.confirmed.menuPurpose }kcalです`
         });
     }
 
