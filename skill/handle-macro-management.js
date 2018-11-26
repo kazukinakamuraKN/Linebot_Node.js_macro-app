@@ -23,7 +23,8 @@ module.exports = class SkillHandleDeliveryOrder {
                             var ary = ["男",5]
                             return ary
                         } else {
-                            return -161
+                            var ary = ["女",-161]
+                            return ary
                         }
                     }
 
@@ -34,7 +35,7 @@ module.exports = class SkillHandleDeliveryOrder {
 
                     bot.queue({
                         type: "text",
-                        text: `${value}性ですね。`
+                        text: `${value[0]}性ですね。`
                     });
                 }
             },
@@ -128,11 +129,14 @@ module.exports = class SkillHandleDeliveryOrder {
                 parser: async (value, bot, event, context) => {
                     if (["低い", "まあまあ", "かなり高い"].includes(value)) {
                         if (["低い"].includes(value)){
-                            return 1.2
+                            var ary = ["低い",1.2]
+                            return ary
                         } else if (["まあまあ"].includes(value)) {
-                            return 1.55
+                            var ary = ["まあまあ",1.55]
+                            return ary
                         }else {
-                            return 1.725
+                            var ary = ["かなり高い",1.725]
+                            return ary
                         }
                     }
 
@@ -143,7 +147,7 @@ module.exports = class SkillHandleDeliveryOrder {
 
                     bot.queue({
                         type: "text",
-                        text: `${value}ですね。`
+                        text: `${value[0]}ですね。`
                     });
                 }
             },
@@ -164,11 +168,14 @@ module.exports = class SkillHandleDeliveryOrder {
                 parser: async (value, bot, event, context) => {
                     if (["減量", "維持", "増量"].includes(value)) {
                         if (["減量"].includes(value)){
-                            return 0.8
+                            var ary = ["減量",0.8]
+                            return ary
                         } else if (["維持"].includes(value)) {
-                            return 1
+                            var ary = ["維持",1]
+                            return ary
                         }else {
-                            return 1.2
+                            var ary = ["増量",1.2]
+                            return ary
                         }
                     }
 
@@ -179,7 +186,7 @@ module.exports = class SkillHandleDeliveryOrder {
 
                     bot.queue({
                         type: "text",
-                        text: `${value}ですね。`
+                        text: `${value[0]}ですね。`
                     });
                 }
             }
@@ -189,7 +196,7 @@ module.exports = class SkillHandleDeliveryOrder {
     async finish(bot, event, context){
         await bot.reply({
             type: "text",
-            text: `あなたの基礎代謝は${10 * context.confirmed.menuWeight + 6.25 * context.confirmed.menuHeight -5 * context.confirmed.menuAge + context.confirmed.menuGender }kcalです。\nあなたの目的とアクティブ度から計算された摂取カロリーは${(10 * context.confirmed.menuWeight + 6.25 * context.confirmed.menuHeight -5 * context.confirmed.menuAge + context.confirmed.menuGender) * context.confirmed.menuActive * context.confirmed.menuPurpose }kcalです`
+            text: `あなたの基礎代謝は${10 * context.confirmed.menuWeight[1] + 6.25 * context.confirmed.menuHeight[1] -5 * context.confirmed.menuAge[1] + context.confirmed.menuGender[1] }kcalです。\nあなたの目的とアクティブ度から計算された摂取カロリーは${(10 * context.confirmed.menuWeight[1] + 6.25 * context.confirmed.menuHeight[1] -5 * context.confirmed.menuAge[1] + context.confirmed.menuGender[1]) * context.confirmed.menuActive[1] * context.confirmed.menuPurpose[1] }kcalです`
         });
     }
 
