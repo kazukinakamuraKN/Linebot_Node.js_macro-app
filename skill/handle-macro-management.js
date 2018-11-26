@@ -20,9 +20,9 @@ module.exports = class SkillHandleDeliveryOrder {
                 parser: async (value, bot, event, context) => {
                     if (["男", "女"].includes(value)) {
                         if (["男"].includes(value)){
-                            return "男"
+                            return 5
                         } else {
-                            return "女"
+                            return -161
                         }
                     }
 
@@ -127,11 +127,11 @@ module.exports = class SkillHandleDeliveryOrder {
                 parser: async (value, bot, event, context) => {
                     if (["低い", "まあまあ", "かなり高い"].includes(value)) {
                         if (["低い"].includes(value)){
-                            return "低い"
+                            return 1.2
                         } else if (["まあまあ"].includes(value)) {
-                            return "まあまあ"
+                            return 1.55
                         }else {
-                            return "かなり高い"
+                            return 1.725
                         }
                     }
 
@@ -163,11 +163,11 @@ module.exports = class SkillHandleDeliveryOrder {
                 parser: async (value, bot, event, context) => {
                     if (["減量", "維持", "増量"].includes(value)) {
                         if (["減量"].includes(value)){
-                            return "減量"
+                            return 0.8
                         } else if (["維持"].includes(value)) {
-                            return "維持"
+                            return 1
                         }else {
-                            return "増量"
+                            return 1.2
                         }
                     }
 
@@ -188,7 +188,7 @@ module.exports = class SkillHandleDeliveryOrder {
     async finish(bot, event, context){
         await bot.reply({
             type: "text",
-            text: `あなたの基礎代謝は${10 * context.confirmed.menuWeight + 6.25 * context.confirmed.menuHeight -5 * context.confirmed.menuAge + 5 }を30分後くらいに${context.confirmed.menuPurpose.message_to_confirm}にお届けしますわ。おおきに。`
+            text: `あなたの基礎代謝は${10 * context.confirmed.menuWeight + 6.25 * context.confirmed.menuHeight -5 * context.confirmed.menuAge + context.confirmed.menuGender }kcalです。\nあなたの目的とアクティブ度から計算された摂取カロリーは${10 * context.confirmed.menuWeight + 6.25 * context.confirmed.menuHeight -5 * context.confirmed.menuAge + context.confirmed.menuGender * context.confirmed.menuActive * context.confirmed.menuPurpose }kcalです`
         });
     }
 
