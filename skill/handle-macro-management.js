@@ -20,7 +20,8 @@ module.exports = class SkillHandleDeliveryOrder {
                 parser: async (value, bot, event, context) => {
                     if (["男", "女"].includes(value)) {
                         if (["男"].includes(value)){
-                            return 5
+                            var ary = ["男",5]
+                            return ary
                         } else {
                             return -161
                         }
